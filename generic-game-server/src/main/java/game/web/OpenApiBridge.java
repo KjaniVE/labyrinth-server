@@ -141,8 +141,7 @@ public abstract class OpenApiBridge {
     }
 
     protected CorsHandler createCorsHandler() {
-        return CorsHandler.create()
-                .addOrigin(".*.")
+        return CorsHandler.create(".*.")
                 .allowedHeader("x-requested-with")
                 .allowedHeader("Access-Control-Allow-Origin")
                 .allowedHeader("Access-Control-Allow-Credentials")

@@ -49,17 +49,6 @@ dependencies {
     implementation project(':generic-game-server')
 }
 
-tasks.withType(Copy).configureEach {
-    filePermissions {
-        fileMode(0755)
-    }
-}
-
-application {
-    mainClass = 'com.example.Main'
-    applicationDefaultJvmArgs = ['-Dfile.encoding=UTF-8']
-}
-
 test {
     useJUnitPlatform()
 }
