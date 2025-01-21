@@ -1,0 +1,7 @@
+rootProject.name = 'labyrinth-server'
+
+include 'server', 'generic-game-server', 'vertx-web-bearer'
+include 'server'
+include 'generic-game-server'
+include 'vertx-web-bearer'
+
