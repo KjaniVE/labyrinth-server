@@ -49,3 +49,4 @@ bin/
 server/src/main/resources
 gradle.properties
 
+.idea
