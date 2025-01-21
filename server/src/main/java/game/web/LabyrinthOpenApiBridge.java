@@ -1,7 +1,7 @@
 package game.web;
 
 import game.logic.LabyrinthService;
-import game.logic.player.LabyrinthServiceImpl;
+import game.logic.LabyrinthServiceImpl;
 import game.web.tokens.PlainTextTokens;
 import game.web.tokens.TokenManager;
 import game.web.views.request.*;
