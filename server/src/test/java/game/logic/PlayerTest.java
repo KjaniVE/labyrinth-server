@@ -27,4 +27,16 @@ class PlayerTest {
         player.setObjective(gold);
         assertEquals(gold, player.getObjective(), "Player objective should be GOLD");
     }
+
+    @Test
+    void testTreasureFound() {
+        assertEquals(0, player.getTreasuresFound().size(), "Player should have found 0 treasures");
+    }
+
+    @Test
+    void getUser() {
+        assertEquals(user, player.getUser(), "Player should have the same user");
+        assertEquals(user.getPlayerName(), player.getUser().getPlayerName(), "Playername should be test");
+        assertEquals(user.getGameId(), player.getUser().getGameId(), "Player gameId should be gameId");
+    }
 }
