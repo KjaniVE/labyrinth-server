@@ -7,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class WallConfigUtilTest {
 
     @Test
+    void testConstructor() {
+        assertThrows(UnsupportedOperationException.class, WallConfigUtil::new);
+    }
+
+    @Test
     void contains() {
         boolean[] walls = new boolean[]{true, true, true, true};
         assertFalse(WallConfigUtil.contains(walls));
