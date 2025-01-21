@@ -1,7 +1,7 @@
 package game.web;
 
 import game.logic.GameId;
-import game.logic.PlayerName;
+import game.logic.player.PlayerName;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.auth.impl.UserImpl;
 

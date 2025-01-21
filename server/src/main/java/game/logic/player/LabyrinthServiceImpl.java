@@ -1,4 +1,6 @@
-package game.logic;
+package game.logic.player;
+
+import game.logic.LabyrinthService;
 
 import java.util.List;
 
