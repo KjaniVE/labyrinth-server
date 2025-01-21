@@ -1,7 +1,9 @@
-package game.logic;
+package game.logic.player;
 
-import game.logic.player.Player;
+import game.logic.PlayerStatus;
+import game.logic.treasure.Treasure;
 import game.web.LabyrinthUser;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +15,7 @@ class PlayerTest {
 
     @Test
     void testPlayerStatus() {
-        assertEquals(PlayerStatus.WAITING, player.getState(), "Player status should be WAITING");
+        Assertions.assertEquals(PlayerStatus.WAITING, player.getState(), "Player status should be WAITING");
         player.setState(PlayerStatus.PLAYING);
         assertEquals(PlayerStatus.PLAYING, player.getState(), "Player status should be PLAYING");
     }
