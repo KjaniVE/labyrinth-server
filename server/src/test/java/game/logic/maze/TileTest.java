@@ -1,7 +1,7 @@
 package game.logic.maze;
 
 import game.logic.LabyrinthException;
-import game.logic.Treasure;
+import game.logic.treasure.Treasure;
 import game.logic.player.Player;
 import game.web.LabyrinthUser;
 import org.junit.jupiter.api.Test;

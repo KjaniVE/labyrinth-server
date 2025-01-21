@@ -1,7 +1,7 @@
 package game.logic.player;
 
 import game.logic.PlayerStatus;
-import game.logic.Treasure;
+import game.logic.treasure.Treasure;
 import game.web.LabyrinthUser;
 
 import java.util.HashSet;
