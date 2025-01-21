@@ -5,6 +5,7 @@ import game.logic.LabyrinthServiceImpl;
 import game.web.tokens.PlainTextTokens;
 import game.web.tokens.TokenManager;
 import game.web.views.request.*;
+import game.web.views.response.GetTreasuresResponse;
 import game.web.views.response.MessageResponse;
 import game.web.views.response.ResponseWithHiddenStatus;
 import io.vertx.ext.web.handler.BearerAuthHandler;
@@ -47,7 +48,7 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("get-treasures")
     public ResponseWithHiddenStatus getTreasures(GetTreasuresRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: get-treasures");
-        return new MessageResponse(501, "NYI: get-treasures");
+        return new GetTreasuresResponse(service.getTreasures());
     }
 
 
