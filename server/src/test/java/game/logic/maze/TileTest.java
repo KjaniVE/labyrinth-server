@@ -66,4 +66,14 @@ class TileTest {
         randomTile.removeTreasure();
         assertNull(randomTile.getTreasure());
     }
+
+    @Test
+    void testEquals() {
+        assertEquals(validTile, new Tile(treasure, validWalls));
+    }
+
+    @Test
+    void testHashCode() {
+        assertEquals(validTile.hashCode(), new Tile(treasure, validWalls).hashCode());
+    }
 }
