@@ -9,11 +9,15 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
+}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 
-    implementation "io.vertx:vertx-web:4.3.4"
+    implementation 'io.vertx:vertx-web:4.4.0'
     implementation "io.vertx:vertx-config:4.3.4"
     implementation "io.vertx:vertx-web-openapi:4.3.4"
 

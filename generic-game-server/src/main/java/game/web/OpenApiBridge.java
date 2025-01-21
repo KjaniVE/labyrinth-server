@@ -53,7 +53,6 @@ public abstract class OpenApiBridge {
         LOGGER.log(Level.FINE, "Installing API-Handlers handlers");
         routerBuilder.operations().forEach(this::installHandlers);
 
-
         LOGGER.log(Level.INFO, "All handlers are installed");
         return routerBuilder.createRouter();
     }
@@ -142,7 +141,8 @@ public abstract class OpenApiBridge {
     }
 
     protected CorsHandler createCorsHandler() {
-        return CorsHandler.create(".*.")
+        return CorsHandler.create()
+                .addOrigin(".*.")
                 .allowedHeader("x-requested-with")
                 .allowedHeader("Access-Control-Allow-Origin")
                 .allowedHeader("Access-Control-Allow-Credentials")
