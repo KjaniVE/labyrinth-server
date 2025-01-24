@@ -2,7 +2,6 @@ package game.logic;
 
 import game.logic.maze.Maze;
 import game.logic.player.Player;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,5 +35,11 @@ public class Game {
 
     public int getMaxPlayers() {
         return maxPlayers;
+    }
+
+    public void joinGame(Player player) {
+        if (players.size() < maxPlayers) {
+            players.add(player);
+        }
     }
 }
