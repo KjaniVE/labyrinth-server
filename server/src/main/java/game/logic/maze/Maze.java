@@ -1,10 +1,14 @@
 package game.logic.maze;
 
+import game.Direction;
+import game.logic.maze.tile.Tile;
+import game.logic.maze.tile.Wall;
 import game.logic.treasure.Treasure;
 import game.logic.treasure.TreasuresUtil;
 
 import java.security.SecureRandom;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Maze {
@@ -35,7 +39,7 @@ public class Maze {
     }
 
     private void addTileToMaze(int i, int j, Treasure treasure) {
-        boolean[] walls = Position.getWallsForPosition(i, j);
+        Map<Direction, Wall> walls = Position.getWallsForPosition(i, j);
         board[i][j] = new Tile(treasure, walls);
     }
 

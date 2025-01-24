@@ -1,5 +1,7 @@
 package game.logic.maze;
 
+import game.logic.maze.tile.Tile;
+import game.logic.maze.tile.WallConfiguration;
 import game.logic.treasure.Treasure;
 import org.junit.jupiter.api.Test;
 
@@ -11,21 +13,21 @@ import static org.junit.jupiter.api.Assertions.*;
 class MazeTest {
 
     @Test
-    void testCorners() {
-        Maze maze = new Maze();
+void testCorners() {
+    Maze maze = new Maze();
 
-        // Topleft corner
-        assertArrayEquals(new boolean[]{true, false, false, true}, maze.getBoard()[0][0].getWalls());
+    // Topleft corner
+    assertEquals(WallConfiguration.TOP_LEFT.getWalls(), maze.getBoard()[0][0].getWalls());
 
-        // Topright corner
-        assertArrayEquals(new boolean[]{true, true, false, false}, maze.getBoard()[0][6].getWalls());
+    // Topright corner
+    assertEquals(WallConfiguration.TOP_RIGHT.getWalls(), maze.getBoard()[0][6].getWalls());
 
-        // Bottomleft corner
-        assertArrayEquals(new boolean[]{false, false, true, true}, maze.getBoard()[6][0].getWalls());
+    // Bottomleft corner
+    assertEquals(WallConfiguration.BOTTOM_LEFT.getWalls(), maze.getBoard()[6][0].getWalls());
 
-        // Bottomright corner
-        assertArrayEquals(new boolean[]{false, true, true, false}, maze.getBoard()[6][6].getWalls());
-    }
+    // Bottomright corner
+    assertEquals(WallConfiguration.BOTTOM_RIGHT.getWalls(), maze.getBoard()[6][6].getWalls());
+}
 
     @Test
     void testTreasuresAmount() {
