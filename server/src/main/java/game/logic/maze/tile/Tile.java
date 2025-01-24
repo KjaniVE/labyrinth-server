@@ -1,29 +1,27 @@
-package game.logic.maze;
+package game.logic.maze.tile;
 
+import game.Direction;
 import game.logic.LabyrinthException;
 import game.logic.treasure.Treasure;
 import game.logic.player.Player;
 
 import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Tile {
 
     private static final SecureRandom random = new SecureRandom();
 
-    private boolean[] walls;
+    private Map<Direction, Wall> walls;
     private Treasure treasure;
     private final Set<Player> players = new HashSet<>();
 
-    public Tile(Treasure treasure, boolean[] walls) {
+    public Tile(Treasure treasure, Map<Direction, Wall> walls) {
         setWalls(walls);
         this.treasure = treasure;
     }
 
-    private void setWalls(boolean[] walls) {
+    private void setWalls(Map<Direction, Wall> walls) {
         if (WallConfigUtil.contains(walls)) {
             this.walls = walls;
         } else {
@@ -35,9 +33,10 @@ public class Tile {
         this(treasure, WallConfiguration.values()[random.nextInt(WallConfiguration.values().length)].getWalls());
     }
 
-    public boolean[] getWalls() {
+    public Map<Direction, Wall> getWalls() {
         return walls;
     }
+
 
     public Treasure getTreasure() {
         return treasure;
@@ -67,11 +66,11 @@ public class Tile {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Tile tile = (Tile) o;
-        return Objects.deepEquals(walls, tile.walls) && Objects.equals(treasure, tile.treasure) && Objects.equals(players, tile.players);
+        return Objects.equals(walls, tile.walls) && Objects.equals(treasure, tile.treasure) && Objects.equals(players, tile.players);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Arrays.hashCode(walls), treasure, players);
+        return Objects.hash(walls, treasure, players);
     }
 }
