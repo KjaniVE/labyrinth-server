@@ -1,6 +1,6 @@
 package game.logic.maze;
 
-import game.Direction;
+import game.logic.Direction;
 import game.logic.maze.tile.Wall;
 import game.logic.maze.tile.WallConfiguration;
 

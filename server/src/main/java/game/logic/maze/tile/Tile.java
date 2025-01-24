@@ -1,6 +1,6 @@
 package game.logic.maze.tile;
 
-import game.Direction;
+import game.logic.Direction;
 import game.logic.LabyrinthException;
 import game.logic.treasure.Treasure;
 import game.logic.player.Player;

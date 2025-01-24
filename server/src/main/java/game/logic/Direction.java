@@ -1,4 +1,4 @@
-package game;
+package game.logic;
 
 public enum Direction {
     TOP,

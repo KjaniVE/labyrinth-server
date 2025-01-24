@@ -1,6 +1,6 @@
 package game.logic.maze.tile;
 
-import game.Direction;
+import game.logic.Direction;
 
 import java.util.EnumMap;
 import java.util.Map;
