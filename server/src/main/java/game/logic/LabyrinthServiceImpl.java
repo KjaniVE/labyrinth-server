@@ -24,4 +24,19 @@ public class LabyrinthServiceImpl implements LabyrinthService {
             throw new LabyrinthException("Game already exists :(");
         }
     }
+
+    @Override
+    public Set<Game> getGames(boolean accepting) {
+        if (accepting) {
+            Set<Game> acceptingGames = new HashSet<>();
+            for (Game game : games) {
+                if (game.getPlayers().size() < game.getMaxPlayers()) {
+                    acceptingGames.add(game);
+                }
+            }
+            return acceptingGames;
+        } else {
+            return games;
+        }
+    }
 }
