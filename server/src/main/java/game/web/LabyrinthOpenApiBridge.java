@@ -53,7 +53,7 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("get-games")
     public ResponseWithHiddenStatus getGames(GetGamesRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: get-games");
-        return new MessageResponse(501, "NYI: get-games");
+        return new GetGamesResponse(service.getGames(request.isAccepting()));
     }
 
 
