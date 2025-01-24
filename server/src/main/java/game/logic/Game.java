@@ -1,6 +1,5 @@
-package game;
+package game.logic;
 
-import game.logic.GameId;
 import game.logic.maze.Maze;
 import game.logic.player.Player;
 

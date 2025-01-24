@@ -1,10 +1,16 @@
 package game.logic.maze;
 
+import game.logic.Direction;
 import game.logic.LabyrinthException;
+import game.logic.maze.tile.Tile;
+import game.logic.maze.tile.Wall;
+import game.logic.maze.tile.WallConfigUtil;
 import game.logic.treasure.Treasure;
 import game.logic.player.Player;
 import game.web.LabyrinthUser;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,8 +18,19 @@ class TileTest {
 
     private final Treasure treasure = new Treasure("Some treasure");
 
-    private final boolean[] invalidWalls = new boolean[]{true, true, true, true};
-    private final boolean[] validWalls = new boolean[]{false, false, true, true};
+    private final Map<Direction, Wall> invalidWalls = Map.of(
+            Direction.TOP, new Wall(true),
+            Direction.RIGHT, new Wall(true),
+            Direction.BOTTOM, new Wall(true),
+            Direction.LEFT, new Wall(true)
+    );
+
+    private final Map<Direction, Wall> validWalls = Map.of(
+            Direction.TOP, new Wall(false),
+            Direction.RIGHT, new Wall(false),
+            Direction.BOTTOM, new Wall(true),
+            Direction.LEFT, new Wall(true)
+    );
 
     private final Tile validTile = new Tile(treasure, validWalls);
     private final Tile randomTile = new Tile(treasure);
@@ -25,7 +42,7 @@ class TileTest {
 
     @Test
     void getWalls() {
-        assertArrayEquals(validWalls, validTile.getWalls());
+        assertEquals(validWalls, validTile.getWalls());
         assertTrue(WallConfigUtil.contains(randomTile.getWalls()));
     }
 

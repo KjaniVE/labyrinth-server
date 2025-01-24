@@ -1,5 +1,6 @@
 package game;
 
+import game.logic.Game;
 import game.logic.player.Player;
 import game.web.LabyrinthUser;
 import org.junit.jupiter.api.Test;
