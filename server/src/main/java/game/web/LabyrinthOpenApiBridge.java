@@ -5,9 +5,7 @@ import game.logic.LabyrinthServiceImpl;
 import game.web.tokens.PlainTextTokens;
 import game.web.tokens.TokenManager;
 import game.web.views.request.*;
-import game.web.views.response.GetTreasuresResponse;
-import game.web.views.response.MessageResponse;
-import game.web.views.response.ResponseWithHiddenStatus;
+import game.web.views.response.*;
 import io.vertx.ext.web.handler.BearerAuthHandler;
 
 import java.util.Map;
@@ -62,7 +60,9 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("create-game")
     public ResponseWithHiddenStatus createGame(CreateGameRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: create-game");
-        return new MessageResponse(501, "NYI: create-game");
+        service.createGame(request.getGameId(), request.getPlayer(), request.getMaximumPlayers());
+
+        return new CreateGameResponse(request.getGameId().toString(), tokenManager.createToken(request.getPlayer().getUser()), request.getPlayer().getUser().getPlayerName().toString());
     }
 
     @Operation("delete-games")
