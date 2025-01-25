@@ -40,7 +40,7 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("get-info")
     public ResponseWithHiddenStatus getInfo(GetInfoRequest ctx) {
         LOGGER.log(Level.INFO, "In request handler of: get-info");
-        return new MessageResponse(501, "NYI: get-info");
+        return new GetInfoResponse();
     }
 
     @Operation("get-treasures")
