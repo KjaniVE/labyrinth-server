@@ -11,4 +11,6 @@ public interface LabyrinthService {
     void createGame(GameId gameId, Player player, int maximumPlayers);
 
     Set<Game> getGames(boolean accepting);
+
+    void joinGame(GameId gameId, Player player);
 }
