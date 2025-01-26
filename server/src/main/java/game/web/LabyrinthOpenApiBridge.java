@@ -5,9 +5,7 @@ import game.logic.LabyrinthServiceImpl;
 import game.web.tokens.PlainTextTokens;
 import game.web.tokens.TokenManager;
 import game.web.views.request.*;
-import game.web.views.response.GetTreasuresResponse;
-import game.web.views.response.MessageResponse;
-import game.web.views.response.ResponseWithHiddenStatus;
+import game.web.views.response.*;
 import io.vertx.ext.web.handler.BearerAuthHandler;
 
 import java.util.Map;
@@ -42,7 +40,7 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("get-info")
     public ResponseWithHiddenStatus getInfo(GetInfoRequest ctx) {
         LOGGER.log(Level.INFO, "In request handler of: get-info");
-        return new MessageResponse(501, "NYI: get-info");
+        return new GetInfoResponse();
     }
 
     @Operation("get-treasures")
@@ -55,14 +53,16 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("get-games")
     public ResponseWithHiddenStatus getGames(GetGamesRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: get-games");
-        return new MessageResponse(501, "NYI: get-games");
+        return new GetGamesResponse(service.getGames(request.isAccepting()));
     }
 
 
     @Operation("create-game")
     public ResponseWithHiddenStatus createGame(CreateGameRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: create-game");
-        return new MessageResponse(501, "NYI: create-game");
+        service.createGame(request.getGameId(), request.getPlayer(), request.getMaximumPlayers());
+
+        return new CreateGameResponse(request.getGameId().toString(), tokenManager.createToken(request.getPlayer().getUser()), request.getPlayer().getUser().getPlayerName().toString());
     }
 
     @Operation("delete-games")
@@ -99,7 +99,8 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("join-game")
     public ResponseWithHiddenStatus joinGame(JoinGameRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: join-game");
-        return new MessageResponse(501, "NYI: join-game");
+        service.joinGame(request.getGameId(), request.getPlayer());
+        return new JoinGameResponse(request.getGameId().toString(), request.getPlayer().getUser().getPlayerName().toString(), tokenManager.createToken(request.getPlayer().getUser()));
     }
 
     @Operation("leave-game")

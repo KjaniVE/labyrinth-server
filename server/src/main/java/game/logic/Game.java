@@ -3,6 +3,7 @@ package game.logic;
 import game.logic.maze.Maze;
 import game.logic.player.Player;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Game {
@@ -41,5 +42,17 @@ public class Game {
         if (players.size() < maxPlayers) {
             players.add(player);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(id, game.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
