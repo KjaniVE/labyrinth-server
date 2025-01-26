@@ -99,7 +99,9 @@ public class LabyrinthOpenApiBridge extends OpenApiBridge { // NOSONAR this is n
     @Operation("join-game")
     public ResponseWithHiddenStatus joinGame(JoinGameRequest request) {
         LOGGER.log(Level.INFO, "In request handler of: join-game");
-        return new MessageResponse(501, "NYI: join-game");
+        LOGGER.log(Level.INFO, request.getGameId().toString());
+        service.joinGame(request.getGameId(), request.getPlayer());
+        return new JoinGameResponse(request.getGameId().toString(), request.getPlayer().getUser().getPlayerName().toString(), tokenManager.createToken(request.getPlayer().getUser()));
     }
 
     @Operation("leave-game")
